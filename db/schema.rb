@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814200450) do
+ActiveRecord::Schema.define(:version => 20130814220923) do
 
   create_table "addresslevel1s", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20130814200450) do
 
   create_table "addresslevel3s", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "kreaideasmails", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "message"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -244,18 +252,5 @@ ActiveRecord::Schema.define(:version => 20130814200450) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "id_type_index_on_seo_meta"
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.integer  "phone"
-    t.string   "address"
-    t.integer  "points"
-    t.integer  "addresslevel1_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "salt"
-    t.string   "hashed_password"
-  end
 
 end
