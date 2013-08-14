@@ -16,11 +16,7 @@ module Refinery
       end
 
       def show
-
         @subcategory = Subcategory.find(params[:id])
-
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @subcategory in the line below:
         present(@page)
       end
 
@@ -34,8 +30,22 @@ module Refinery
             flash[:notice] = "Borrado correctamente"
             render :index
         end
-      
 
+        def search_by_category
+          @subcategoriesjson = ::Refinery::Subcategories::Subcategory.where(:category_id => params[:category_id])
+          respond_to do |format|
+            format.json {render :json => @subcategoriesjson}
+          end
+        end
+
+        def get_category_by_subcategory
+          @idcategory= ::Refinery::Subcategories::Subcategory.where(:id => params[:subcategory_id]).first().category_id
+          @categoryjson = ::Refinery::Categories::Category.where(:id => @idcategory).first()
+          respond_to do |format|
+            format.json {render :json => @categoryjson}
+          end
+        end
+      
     protected
 
       def find_all_subcategories

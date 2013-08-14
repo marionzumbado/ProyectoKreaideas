@@ -12,7 +12,7 @@
 
   <div class='field'>
     <%= f.label :description -%>
-    <%= f.text_field :description -%>
+    <%= f.text_field :description-%>
   </div>
 
   <div class='field'>
@@ -22,7 +22,7 @@
 
   <div class='field'>
     <%= f.label :user_id -%>
-    <%= f.collection_select :user_id , ::Refinery::User.all, :id, :name-%>
+    <%= f.text_field :user_id  ,:value => @usercreatorname,:disabled => "disabled"%>
 
   </div>
 

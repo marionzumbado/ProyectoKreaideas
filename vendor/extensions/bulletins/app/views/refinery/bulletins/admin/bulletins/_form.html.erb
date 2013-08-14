@@ -1,4 +1,4 @@
-<h1>Nuevo Boletín</h1>
+<h1>Nuevo Boletín <%= @user %></h1>
 
 <%= form_for [refinery, :bulletins_admin, @bulletin] do |f| -%>
   <%= render '/refinery/admin/error_messages',
@@ -22,7 +22,7 @@
 
   <div class='field'>
     
-    <%= f.text_field :user_id  ,:value => @user, :type =>'hidden'-%>
+    <%= f.text_field :user_id  ,:value => @user, :type =>'hidden',:disabled => "disabled"%>
   </div>
 
  

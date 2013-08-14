@@ -12,7 +12,7 @@ module Refinery
 	    :title => "El titulo",
 	    :description => "La descripción",
 	    :publicationday => "El dia de publicación",
-	    :user_id => "El usuario"
+	    :user_id => "El usuario que realizo la publicación"
     
   		}
 

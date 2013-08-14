@@ -46,9 +46,17 @@ GEM
     arel (3.0.2)
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
+    aws-sdk (1.15.0)
+      json (~> 1.4)
+      nokogiri (< 1.6.0)
+      uuidtools (~> 2.1)
     babosa (0.3.11)
     bcrypt-ruby (3.1.1)
     builder (3.0.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -86,10 +94,16 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.8)
+    nokogiri (1.5.10)
     orm_adapter (0.4.0)
     paper_trail (2.7.2)
       activerecord (~> 3.0)
       railties (~> 3.0)
+    paperclip (3.5.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -189,6 +203,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     will_paginate (3.0.4)
@@ -197,8 +212,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   coffee-rails (~> 3.2.1)
   jquery-rails
+  paperclip
   pg
   rails (= 3.2.14)
   refinerycms (~> 2.1.0)

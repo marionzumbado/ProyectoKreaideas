@@ -4,10 +4,13 @@ module Refinery
       class BulletinsController < ::Refinery::AdminController
 
         crudify :'refinery/bulletins/bulletin',   :xhr_paging => true
-
+      #aplication before filter
       before_filter :find_all_bulletins
       before_filter :find_page
-      before_filter :find_user_id
+      #my beforre filter
+      before_filter :find_usercreator,:only => [:edit]
+      before_filter :set_bulletin, only: [:show, :edit, :update, :destroy]
+      before_filter :find_actualuser,:only => [:create]
 
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -33,8 +36,17 @@ module Refinery
         @page = ::Refinery::Page.where(:link_url => "/bulletins").first
       end
 
-      def find_user_id
-      	@user=current_refinery_user.id
+      def find_usercreator
+        #@bulletin2= Bulletin.find(params[:id])
+      	@usercreatorname= ::Refinery::User.find(@bulletin.user_id)
+      end
+
+      def find_actualuser
+        @user_id=current_refinery_user.id
+      end
+
+      def set_bulletin
+        @bulletin= Bulletin.find(params[:id])
       end
 
       end

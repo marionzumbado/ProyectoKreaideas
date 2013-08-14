@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809160205) do
+ActiveRecord::Schema.define(:version => 20130813223642) do
 
   create_table "productos", :force => true do |t|
     t.string   "nombre"
@@ -55,16 +55,6 @@ ActiveRecord::Schema.define(:version => 20130809160205) do
     t.string   "image_uid"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-  end
-
-  create_table "refinery_news", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.date     "publicationday"
-    t.integer  "user_id"
-    t.integer  "position"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
   end
 
   create_table "refinery_page_part_translations", :force => true do |t|
@@ -131,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20130809160205) do
 
   create_table "refinery_products", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.decimal  "price"
     t.string   "downloadpath"
     t.integer  "image_id"
@@ -141,8 +131,13 @@ ActiveRecord::Schema.define(:version => 20130809160205) do
     t.integer  "bonus"
     t.integer  "subcategory_id"
     t.integer  "position"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.boolean  "producttype"
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   create_table "refinery_resources", :force => true do |t|

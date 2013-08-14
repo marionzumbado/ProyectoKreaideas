@@ -4,63 +4,69 @@
 
 <% content_for :body do %>
   <section>
-    <h1>Name</h1>
+    <h1>Nombre</h1>
     <p>
       <%=raw @product.name %>
     </p>
   </section>
   <section>
-    <h1>Description</h1>
+    <h1>Descripción</h1>
     <p>
       <%=raw @product.description %>
     </p>
   </section>
   <section>
-    <h1>Price</h1>
+    <h1>Precio</h1>
     <p>
       <%=raw @product.price %>
     </p>
   </section>
   <section>
-    <h1>Downloadpath</h1>
+    <h1>Dirección de descarga</h1>
     <p>
       <%=raw @product.downloadpath %>
     </p>
   </section>
   <section>
-    <h1>Image</h1>
+    <h1>Imagen</h1>
     <p>
       <%= image_fu @product.image, nil %>
     </p>
   </section>
   <section>
-    <h1>Code</h1>
+    <h1>Código</h1>
     <p>
       <%=raw @product.code %>
     </p>
   </section>
   <section>
-    <h1>Author</h1>
+    <h1>Autor</h1>
     <p>
       <%=raw @product.author %>
     </p>
   </section>
   <section>
-    <h1>Exchange</h1>
+    <h1>Canje</h1>
     <p>
       <%=raw @product.exchange %>
     </p>
   </section>
   <section>
-    <h1>Bonus</h1>
+    <h1>Bono</h1>
     <p>
       <%=raw @product.bonus %>
+    </p>
+  </section>
+    <section>
+    <h1>Categoria</h1>
+    <p>
+      <%=raw @product.subcategory.category.name %>
     </p>
   </section>
   <section>
     <h1>Subcategoria</h1>
     <p>
-      <%=raw @product.subcategoria_id %>
+      <%=raw @product.subcategory.name %>
     </p>
   </section>
 

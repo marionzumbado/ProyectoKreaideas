@@ -38,17 +38,49 @@
     });
 </script>
 
+
+<script type="text/javascript">
+    $(document).ready(function(){
+     
+                var id_value_string= $("select#product_subcategory_id").val();
+               // Send the request and update sub category dropdown
+                $.ajax({
+                    dataType: "json",
+                    cache: false,
+                    url: '/subcategories/get_category_by_subcategory/'+id_value_string+'.json' ,
+                    data:  id_value_string,
+                    timeout: 2000,
+                    error: function(XMLHttpRequest, errorTextStatus, error){
+                        alert("Failed to submit : "+ errorTextStatus+" ;"+error);
+                    },
+                    success: function(data){                    
+                             $("#category_category_id").val(data["id"]);                 
+                     }
+                });         
+    });
+</script>
+
 <%= form_for [refinery, :products_admin, @product] do |f| -%>
+
+ <% if @product.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this user from being saved:</h2>  
+    <ul>  
+    <% @product.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div> 
+
   <%= render '/refinery/admin/error_messages',  :object => @product,  :include_object_name => true %>
 
+  
+  <% end %>
 
-  <div class='field'>
-    
-  <p>
-    <%= f.label :attach %><br />
-    <%= f.file_field :attach%>
-  </p>
-
+<div>
+  <b>Avatar:</b>
+  <%= image_tag @product.attach.url %>
+</div>
   <div class='field'>
     <%= f.label :code -%>
     <%= f.text_field :code -%>
@@ -89,15 +121,16 @@
     <%= f.label :bonus -%>
     <%= f.number_field :bonus -%>
   </div>
-  <div>   
-    <label>Categorias  </label>
-    <%= collection_select(:category, :category_id,@categories,:id, :name)-%>
+    <div>   
+    <%= f.label :category %><br />
+     <%= collection_select(:category, :category_id, @editcategories,:id, :name)-%>
   </div>
   <div>
     <label>Subcategorias  </label>
-    <%= f.collection_select :subcategory_id, @subcategories, :id, :name %>
+    <%= f.collection_select :subcategory_id, @editsubcategories, :id, :name  %>
   </div>
-<%= render '/refinery/admin/form_actions', :f => f,
+
+  <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.products.admin.products.product'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @product.name) -%>
