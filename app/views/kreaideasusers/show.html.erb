@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @kreaideasuser.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @kreaideasuser.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @kreaideasuser.phone %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @kreaideasuser.address %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @kreaideasuser.points %>
+</p>
+
+<p>
+  <b>Addresslevel1:</b>
+  <%= @kreaideasuser.addresslevel1_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_kreaideasuser_path(@kreaideasuser) %> |
+<%= link_to 'Back', kreaideasusers_path %>

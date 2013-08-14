@@ -1,0 +1,37 @@
+<h1>Listing kreaideasusers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Points</th>
+    <th>Hashed password</th>
+    <th>Salt</th>
+    <th>Addresslevel1</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @kreaideasusers.each do |kreaideasuser| %>
+  <tr>
+    <td><%= kreaideasuser.name %></td>
+    <td><%= kreaideasuser.email %></td>
+    <td><%= kreaideasuser.phone %></td>
+    <td><%= kreaideasuser.address %></td>
+    <td><%= kreaideasuser.points %></td>
+    <td><%= kreaideasuser.hashed_password %></td>
+    <td><%= kreaideasuser.salt %></td>
+    <td><%= kreaideasuser.addresslevel1_id %></td>
+    <td><%= link_to 'Show', kreaideasuser %></td>
+    <td><%= link_to 'Edit', edit_kreaideasuser_path(kreaideasuser) %></td>
+    <td><%= link_to 'Destroy', kreaideasuser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Kreaideasuser', new_kreaideasuser_path %>

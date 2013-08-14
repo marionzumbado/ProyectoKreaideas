@@ -1,8 +1,13 @@
 CMSKreaideas::Application.routes.draw do
 
   
+  resources :kreaideasusers
+
+
   resources :categories
   resources :productos
+
+  
   #resources :subcategories do
    # collection do
     #  match 'search_by_category/:category_id' => 'refinery/subcategories#search_by_category'

@@ -22,11 +22,11 @@ class ProductosController < ApplicationController
 
  
   end
-    def set_product
-      @product = Producto.find(params[:id])
-    end
+  def set_product
+    @product = Producto.find(params[:id])
+  end
 
-    def producto_params
-      params.require(:producto).permit(:nombre)
-    end
+  def producto_params
+    params.require(:producto).permit(:nombre)
+  end
 end

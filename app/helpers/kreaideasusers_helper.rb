@@ -1,0 +1,2 @@
+module KreaideasusersHelper
+end

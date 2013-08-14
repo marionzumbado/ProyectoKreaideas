@@ -1,0 +1,46 @@
+<%= form_for(@kreaideasuser) do |f| %>
+  <% if @kreaideasuser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kreaideasuser.errors.count, "error") %> prohibited this kreaideasuser from being saved:</h2>
+
+      <ul>
+      <% @kreaideasuser.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :password, 'Contraseña' %>:<br />
+    <%= f.password_field :password, :size => 40 %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, 'Confirmar contraseña' %>:<br />
+    <%= f.password_field :password_confirmation, :size => 40 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :addresslevel1_id %><br />
+    <%= f.number_field :addresslevel1_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
