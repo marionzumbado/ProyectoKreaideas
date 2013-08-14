@@ -4,11 +4,6 @@ CMSKreaideas::Application.routes.draw do
 
   get "admin/index"
 
-  get "sessions/new"
-
-  get "sessions/create"
-
-  get "sessions/destroy"
 
   controller :sessions do
     get 'login' => :new
@@ -17,6 +12,7 @@ CMSKreaideas::Application.routes.draw do
   end
 
   resources :kreaideasmails
+  resources :sessions
 
 
   resources :kreaideasusers
