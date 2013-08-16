@@ -41,10 +41,10 @@ class KreaideasmailsController < ApplicationController
   # POST /kreaideasmails.json
   def create
     @kreaideasmail = Kreaideasmail.new(kreaideasmail_params)
-
+    Notifier.emailcontact_received(@kreaideasmail).deliver
     respond_to do |format|
       if @kreaideasmail.save
-        format.html { redirect_to @kreaideasmail, notice: 'Kreaideasmail was successfully created.' }
+        format.html { redirect_to @kreaideasmail, notice: 'El correo a sido enviado con éxito.' }
         format.json { render json: @kreaideasmail, status: :created, location: @kreaideasmail }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class KreaideasmailsController < ApplicationController
 
     respond_to do |format|
       if @kreaideasmail.update_attributes(kreaideasmail_params)
-        format.html { redirect_to @kreaideasmail, notice: 'Kreaideasmail was successfully updated.' }
+        format.html { redirect_to @kreaideasmail, notice: 'EL correo a sido actualizado con éxito.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
