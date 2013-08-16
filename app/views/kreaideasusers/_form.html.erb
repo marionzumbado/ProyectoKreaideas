@@ -37,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :addresslevel1_id %><br />
-    <%= f.number_field :addresslevel1_id %>
+    <%= f.label :country_id %><br />
+    <%= f.collection_select :country_id,@countries, :id, :name -%>
   </div>
   <div class="actions">
     <%= f.submit %>

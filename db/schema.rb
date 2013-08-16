@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814220923) do
+ActiveRecord::Schema.define(:version => 20130816214307) do
 
   create_table "addresslevel1s", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(:version => 20130814220923) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "kreaideasmails", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -49,9 +55,9 @@ ActiveRecord::Schema.define(:version => 20130814220923) do
     t.integer  "points"
     t.string   "hashed_password"
     t.string   "salt"
-    t.integer  "addresslevel1_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.integer  "country_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "productos", :force => true do |t|
