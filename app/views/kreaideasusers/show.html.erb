@@ -1,33 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b>Nombre:</b>
   <%= @kreaideasuser.name %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b>Correo:</b>
   <%= @kreaideasuser.email %>
 </p>
 
 <p>
-  <b>Phone:</b>
+  <b>Télefono:</b>
   <%= @kreaideasuser.phone %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b>Dirección:</b>
   <%= @kreaideasuser.address %>
 </p>
 
 <p>
-  <b>Points:</b>
+  <b>Puntos acumulados:</b>
   <%= @kreaideasuser.points %>
 </p>
 
 <p>
-  <b>Addresslevel1:</b>
-  <%= @kreaideasuser.country_id %>
+  <b>País:</b>
+  <%= @kreaideasuser.country.name %>
+</p>
+
+<p>
+  <b>Avatar</b>
+  <%= image_tag(@kreaideasuser.avatar.url,:size => "150x180" ) %>
 </p>
 
 

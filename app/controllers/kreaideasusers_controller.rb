@@ -94,6 +94,6 @@ class KreaideasusersController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def kreaideasuser_params
-      params.require(:kreaideasuser).permit(:name,:email,:address,:phone,:salt,:addresslevel1_id,:points,:hashed_password, :password, :password_confirmation)
+      params.require(:kreaideasuser).permit(:name,:avatar,:email,:address,:phone,:salt,:country_id,:points,:hashed_password, :password, :password_confirmation)
     end
 end

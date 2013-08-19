@@ -1,9 +1,10 @@
 
 require 'digest/sha2'
 class Kreaideasuser < ActiveRecord::Base
-	attr_accessible :address, :addresslevel1_id, :email, :hashed_password, :name, :phone, :points,:password,:password_confirmation,:country_id
-
-	validates :name,:email,:phone,:points,:address,:password,:password_confirmation, :presence => {:message => "debe estar presente"} 
+	belongs_to :country
+	attr_accessible :address, :email, :hashed_password, :name, :phone, :points,:password,:password_confirmation,:country_id,:avatar
+	has_attached_file :avatar
+	validates :name,:email,:phone,:points,:address,:password,:password_confirmation,:avatar, :presence => {:message => "debe estar presente"} 
 	validates :email, :uniqueness => {:message => "ya esta en uso"}
 	validates :password, :confirmation => {:message => "debe ser la misma la contraseña de confirmación"}
 	validates :phone , :numericality => {:message => "debe ser un número"}
@@ -23,7 +24,8 @@ class Kreaideasuser < ActiveRecord::Base
     :password => "La contraseña",
     :points => "Los puntos",
     :password_confirmation => "La contraseña de confirmación",
-    :country_id => "El país"
+    :country_id => "El país",
+    :avatar => "El avatar"
  	 }
 
     def self.human_attribute_name(attr, options={})

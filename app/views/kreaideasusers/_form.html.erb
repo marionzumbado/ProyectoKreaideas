@@ -40,6 +40,10 @@
     <%= f.label :country_id %><br />
     <%= f.collection_select :country_id,@countries, :id, :name -%>
   </div>
+  <div class="field">
+    <%= f.label :avatar %><br/>
+    <%= f.file_field :avatar %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

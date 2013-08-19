@@ -2,14 +2,13 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Points</th>
-    <th>Hashed password</th>
-    <th>Salt</th>
-    <th>Addresslevel1</th>
+    <th>Nombre</th>
+    <th>Correo</th>
+    <th>Télefono</th>
+    <th>Dirección</th>
+    <th>Puntos</th>
+    <th>País</th>
+    <th>Avatar</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,7 +23,9 @@
     <td><%= kreaideasuser.points %></td>
     <td><%= kreaideasuser.hashed_password %></td>
     <td><%= kreaideasuser.salt %></td>
-    <td><%= kreaideasuser.country_id %></td>
+    <td><%= kreaideasuser.country.name %></td>
+    <td><%=image_tag(kreaideasuser.avatar.url,:size => "150x180" ) %></td>
+
     <td><%= link_to 'Show', kreaideasuser %></td>
     <td><%= link_to 'Edit', edit_kreaideasuser_path(kreaideasuser) %></td>
     <td><%= link_to 'Destroy', kreaideasuser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
