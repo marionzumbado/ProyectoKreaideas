@@ -1,7 +1,6 @@
 class KreaideasusersController < ApplicationController
   # GET /kreaideasusers
   # GET /kreaideasusers.json+
-  before_filter :get_countries
   def index
     @kreaideasusers = Kreaideasuser.all
 
@@ -84,16 +83,11 @@ class KreaideasusersController < ApplicationController
 
   private
 
-    def get_countries
-
-      @countries = Country.all
-
-    end
 
     # Use this method to whitelist the permissible parameters. Example:
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def kreaideasuser_params
-      params.require(:kreaideasuser).permit(:name,:avatar,:email,:address,:phone,:salt,:country_id,:points,:hashed_password, :password, :password_confirmation)
+      params.require(:kreaideasuser).permit(:name,:avatar,:email,:address,:phone,:salt,:countrycode,:points,:hashed_password, :password, :password_confirmation)
     end
 end

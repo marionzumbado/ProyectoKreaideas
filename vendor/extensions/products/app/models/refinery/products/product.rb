@@ -2,13 +2,21 @@ module Refinery
   module Products
     class Product < Refinery::Core::BaseModel
       has_attached_file :attach
+      has_many :productimages , :as=>:attachable, :class_name => '::Productimage' 
+
+       accepts_nested_attributes_for :productimages, :allow_destroy => true
+
+
+
+
+
       belongs_to :category , :class_name => '::Refinery::Categories::Category'
       belongs_to :subcategory, :class_name => '::Refinery::Subcategories::Subcategory'
 
       self.table_name = 'refinery_products'
 
-      attr_accessible :name, :description, :price, :downloadpath, :image_id, :code, :author, :exchange, :bonus, :subcategory_id, :position,:attach
-      validates :subcategory_id,:name,:description, :price, :downloadpath, :image_id, :code, :author, :exchange, :bonus, :presence => { :message => "debe estar presente" }
+      attr_accessible :name, :description, :price, :code, :author, :exchange, :bonus, :subcategory_id, :position,:attach,:productimages_attributes
+      validates :subcategory_id,:name,:description, :price, :code, :author, :exchange, :bonus, :presence => { :message => "debe estar presente" }
       validates :code, :uniqueness => { :message => "ya esta en uso" }
       validates :price,:bonus,:exchange ,:numericality => { :message => "debe ser un número" }
 
@@ -20,12 +28,10 @@ module Refinery
     :code => "El código",
     :name => "El nombre",
     :price => "El precio",
-    :downloadpath => "La direccion de descarga",
     :author => "El autor",
     :bonus => "El bono",
     :exchange => "El canje",
     :description => "La descripción",
-    :image => "La imágen",
     :subcategory_id => "La subcategoria"
     
   }

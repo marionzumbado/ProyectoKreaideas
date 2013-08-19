@@ -1,8 +1,8 @@
 
 require 'digest/sha2'
 class Kreaideasuser < ActiveRecord::Base
-	belongs_to :country
-	attr_accessible :address, :email, :hashed_password, :name, :phone, :points,:password,:password_confirmation,:country_id,:avatar
+
+	attr_accessible :address, :email, :hashed_password, :name, :phone, :points,:password,:password_confirmation,:countrycode,:avatar
 	has_attached_file :avatar
 	validates :name,:email,:phone,:points,:address,:password,:password_confirmation,:avatar, :presence => {:message => "debe estar presente"} 
 	validates :email, :uniqueness => {:message => "ya esta en uso"}
@@ -24,7 +24,7 @@ class Kreaideasuser < ActiveRecord::Base
     :password => "La contraseña",
     :points => "Los puntos",
     :password_confirmation => "La contraseña de confirmación",
-    :country_id => "El país",
+    :countrycode => "El país",
     :avatar => "El avatar"
  	 }
 

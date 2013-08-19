@@ -54,7 +54,7 @@ module Refinery
         end
 
         def product_params
-      		params.require(:product).permit(:name, :description, :image, :price,:bonus,:exchange,:subcategory_id,:code)
+      		params.require(:product).permit(:name, :description, :price,:bonus,:exchange,:subcategory_id,:code)
     	end
 
     	def set_product

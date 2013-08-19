@@ -37,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :country_id %><br />
-    <%= f.collection_select :country_id,@countries, :id, :name -%>
+    <%= f.label :countrycode %><br />
+    <%= f.country_select :countrycode %>
   </div>
   <div class="field">
     <%= f.label :avatar %><br/>

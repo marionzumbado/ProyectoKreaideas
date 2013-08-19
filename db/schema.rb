@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819162020) do
+ActiveRecord::Schema.define(:version => 20130819224637) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -35,17 +35,16 @@ ActiveRecord::Schema.define(:version => 20130819162020) do
     t.integer  "points"
     t.string   "hashed_password"
     t.string   "salt"
-    t.integer  "country_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "countrycode"
   end
 
-  create_table "productos", :force => true do |t|
-    t.string   "nombre"
+  create_table "productimages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -154,8 +153,6 @@ ActiveRecord::Schema.define(:version => 20130819162020) do
     t.string   "name"
     t.text     "description"
     t.decimal  "price"
-    t.string   "downloadpath"
-    t.integer  "image_id"
     t.string   "code"
     t.string   "author"
     t.integer  "exchange"
@@ -164,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20130819162020) do
     t.integer  "position"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.boolean  "producttype"
     t.string   "attach_file_name"
     t.string   "attach_content_type"
     t.integer  "attach_file_size"
