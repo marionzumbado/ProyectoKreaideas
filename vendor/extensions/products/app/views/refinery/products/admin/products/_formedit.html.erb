@@ -1,4 +1,6 @@
 <%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :defaults, "nested_form" %>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("select#category_category_id").change(function(){
@@ -60,7 +62,7 @@
     });
 </script>
 
-<%= form_for [refinery, :products_admin, @product] do |f| -%>
+<%= nested_form_for [refinery, :products_admin, @product] do |f| -%>
 
  <% if @product.errors.any? %>  
   <div id="errorExplanation">  
@@ -76,6 +78,29 @@
 
   
   <% end %>
+
+
+
+
+<h3> PRE Imagenes </h3>
+<div class="task">
+<% f.fields_for "product[productimages]", @product do |task_form| %>
+  <p>
+    Task: <%= task_form.text_field :name %>
+    <%= link_to_function "remove", "$(this).up('.productimage').remove()" %>
+  </p>
+<% end %>
+</div>
+
+<h3>  Imagenes </h3>
+  <%= f.fields_for :productimages do |task| %>
+    <%= task.text_field :image_file_name%>
+     <%= image_tag task.object.image.url%>
+    <%= task.link_to_remove "-" %>
+  <% end %>
+  <p>
+    <%= f.link_to_add "+", :productimages %>
+  </p>
 
 <div>
   <b>Archivo:</b>
@@ -122,15 +147,6 @@
     <%= f.collection_select :subcategory_id, @editsubcategories, :id, :name  %>
   </div>
 
-    <div id="files">
-    <% number = 0 %>
-  <%= f.fields_for :images do |asset| %>
-        <%= asset.label "File ##{number +=1}" %>
-        <%= asset.file_field :asset %>
-  <% end %>
-  </br>
-    <a class='object1' id="addfiletext" href="javascript:add_file()">Agregar imagen </a>   
-  </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
