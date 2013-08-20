@@ -1,6 +1,9 @@
 <%= javascript_include_tag :defaults %>
+<%= javascript_include_tag :defaults, "nested_form" %>
+
 <script type="text/javascript">
-    $(document).ready(function(){
+ $(document).ready(function(){
+         Numerous.init();
         $("select#category_category_id").change(function(){
             var id_value_string = $(this).val();
             if (id_value_string == "") {
@@ -38,71 +41,19 @@
     });
 </script>
 
-<script type="text/javascript">
-//script pata agregar mas campos para mas achivos
-var filecounter = 1;
-function add_file()  
-{ 
-  filecounter++;
-  var br = document.createElement('br');  //para los saltos necesarios
-  br.className='object'+filecounter;
-  //nuevo campos a insertar la clase es para cuando eliminemos
-  var inputfile = document.createElement('input');  
-  inputfile.id="inputfile"+ filecounter;
-  //inputfile.class="object"+ filecounter;
-  inputfile.type="file";
-  inputfile.className='object'+ filecounter;
-  //agrega en el div files
-  document.getElementById('files').appendChild(inputfile);
-  //agregamos el boton de eliminar el archivo
-  var inputbutton = document.createElement('input');
-  inputbutton.id="inputbutton"+filecounter;
-  //inputbutton.class="object"+filecounter;
-  inputbutton.type="button";
-  inputbutton.className='object'+filecounter;
-  inputbutton.value="Eliminar";
-  //accion de eliminar del boton, borra toda la clase a la que pertenece el boton
-  inputbutton.onclick= function(){
-    alert(this.className);
-    $('.'+this.className).remove();
-  };
-  document.getElementById('files').appendChild(inputbutton);
-  document.getElementById('files').appendChild(br);
-  //borramos addfiltext para agregarlo luego al final
-  $("#addfiletext").remove();
-  //lo agregamos al final
-   var addfilenew = document.createElement('a');
-   addfilenew.id="addfiletext";
-   addfilenew.href="javascript:add_file()";
-   addfilenew.text="Agregar imagen" + filecounter;
-   document.getElementById('files').appendChild(addfilenew);
 
-   
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%= form_for [refinery, :products_admin, @product], html: { multipart: true } do |f| -%>
+<%= nested_form_for [refinery, :products_admin, @product], html: { multipart: true } do |f| -%>
   <%= render '/refinery/admin/error_messages',  :object => @product,  :include_object_name => true %>
 
-
+  <h3>  Imagenes </h3>
+  <%= f.fields_for :productimages do |task| %>
+    <%= task.file_field :image %>
+    <%= task.link_to_remove "-" %>
+  <% end %>
+  <p>
+    <%= f.link_to_add "+", :productimages %>
+  </p>
+  
   <div class='field'>  
   <p>
     <label>Archivo<label/>
@@ -148,24 +99,14 @@ function add_file()
     <label>Subcategorias  </label>
     <%= f.collection_select :subcategory_id, @subcategories, :id, :name %>
   </div>
-  <div id="files">
-    <% number = 0 %>
-  <%= f.fields_for :images do |asset| %>
-        <%= asset.label "File ##{number +=1}" %>
-        <%= asset.file_field :asset %>
-  <% end %>
-</br>
-    <a class='object1' id="addfiletext" href="javascript:add_file()">Agregar imagen </a>   
-  </div>
-
-
-
 
 <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.products.admin.products.product'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @product.name) -%>
 <% end -%>
+
+
 
 
 

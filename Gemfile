@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "nested_form"
 gem 'rails', '3.2.14'
 gem 'pg'
 gem 'paperclip'

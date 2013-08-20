@@ -2,7 +2,7 @@ module Refinery
   module Products
     class Product < Refinery::Core::BaseModel
       has_attached_file :attach
-      has_many :productimages , :as=>:attachable, :class_name => '::Productimage' 
+      has_many :productimages ,:class_name => '::Productimage', :dependent => :destroy
 
        accepts_nested_attributes_for :productimages, :allow_destroy => true
 

@@ -10,10 +10,23 @@ module Refinery
 	    before_filter :find_all_products
 	    before_filter :find_page
 
+
+
         def index
 	      # you can use meta fields from your model instead (e.g. browser_title) by swapping @page for @product in the line below:
 	      present(@page)
 	    end
+
+	    def new
+	    	@product=Product.new
+	    	@product.productimages.build
+	    end
+
+		def update
+
+			@product=Product.find(params[:id])
+			@product.update_attributes(params[:product])
+		end
 	   
 	    def show
 	      @product = Product.find(params[:id])
