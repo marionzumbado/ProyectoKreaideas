@@ -45,7 +45,7 @@
 <%= nested_form_for [refinery, :products_admin, @product], html: { multipart: true } do |f| -%>
   <%= render '/refinery/admin/error_messages',  :object => @product,  :include_object_name => true %>
 
-  <h3>  Imagenes </h3>
+  <h3>  Imagenes representativas</h3>
   <%= f.fields_for :productimages do |task| %>
     <%= task.file_field :image %>
     <%= task.link_to_remove "-" %>
@@ -55,15 +55,24 @@
   </p>
   
   <div class='field'>  
-  <p>
-    <label>Archivo<label/>
-    <%= f.file_field :attach%>
-  </p>
+    <p>
+      <label>
+        Archivo a descargar
+      <label/>
+      <%= f.file_field :attach%>
+    </p>
+  </div>
 
   <div class='field'>
     <%= f.label :code -%>
     <%= f.text_field :code -%>
   </div>
+
+  <div class='field'>
+    <%= f.label :stock -%>
+    <%= f.text_field :stock -%>
+  </div>
+
   <div class='field'>
     <%= f.label :name -%>
     <%= f.text_field :name -%>
@@ -83,6 +92,7 @@
     <%= f.label :author -%>
     <%= f.text_field :author -%>
   </div>
+
   <div class='field'>
     <%= f.label :exchange -%>
     <%= f.number_field :exchange -%>
@@ -91,16 +101,18 @@
     <%= f.label :bonus -%>
     <%= f.number_field :bonus -%>
   </div>
-  <div>   
+
+  <div class='field'>   
     <label>Categorias  </label>
     <%= collection_select(:category, :category_id,@categories,:id, :name)-%>
   </div>
-  <div>
+
+  <div class='field'>
     <label>Subcategorias  </label>
     <%= f.collection_select :subcategory_id, @subcategories, :id, :name %>
   </div>
 
-<%= render '/refinery/admin/form_actions', :f => f,
+  <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.products.admin.products.product'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @product.name) -%>

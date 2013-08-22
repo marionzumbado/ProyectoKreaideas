@@ -1,5 +1,8 @@
 Refinery::Core::Engine.routes.draw do
 
+  get 'admin' => 'admin#index'
+  get "admin/index"
+  resources :kreaideasmails
   # Frontend routes
   namespace :subcategories do
     resources :subcategories, :path => '', :only => [:index, :show] do

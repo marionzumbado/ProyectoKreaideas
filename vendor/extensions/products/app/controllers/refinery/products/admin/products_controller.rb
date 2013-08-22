@@ -22,13 +22,9 @@ module Refinery
 	    	@product.productimages.build
 	    end
 
-		def update
+		
 
-			@product=Product.find(params[:id])
-			@product.update_attributes(params[:product])
-		end
-	   
-	    def show
+		def show
 	      @product = Product.find(params[:id])
 		  # you can use meta fields from your model instead (e.g. browser_title) by swapping @page for @product in the line below:
 	      present(@page)
@@ -67,7 +63,7 @@ module Refinery
         end
 
         def product_params
-      		params.require(:product).permit(:name, :description, :price,:bonus,:exchange,:subcategory_id,:code)
+      		params.require(:product).permit(:name, :description, :price,:bonus,:exchange,:subcategory_id,:code,:attach)
     	end
 
     	def set_product

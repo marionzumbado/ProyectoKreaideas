@@ -1,5 +1,6 @@
 Refinery::Core::Engine.routes.draw do
 
+  #match 'user_root' => redirect("/wherever/you/want")
   # Frontend routes
   namespace :products do
     resources :products, :path => '', :only => [:index, :show]

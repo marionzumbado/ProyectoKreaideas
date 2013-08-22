@@ -1,7 +1,6 @@
 CMSKreaideas::Application.routes.draw do
 
   get 'admin' => 'admin#index'
-
   get "admin/index"
 
 
@@ -13,13 +12,9 @@ CMSKreaideas::Application.routes.draw do
 
   resources :kreaideasmails
   resources :sessions
-
-
   resources :kreaideasusers
-
-
   resources :categories
-  resources :productos
+  resources :products
 
   
   #resources :subcategories do

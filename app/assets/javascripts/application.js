@@ -15,7 +15,7 @@
 //= require_tree .
 //= require bootstrap.min
 //= require jquery_nested_form
-
+//las siguientes lineas son para el nested_form_for
 function remove_fields(link) {
   $(link).previous("input[type=hidden]").value = "1";
   $(link).up(".nested-fields").hide();

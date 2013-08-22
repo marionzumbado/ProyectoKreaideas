@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820215131) do
+ActiveRecord::Schema.define(:version => 20130822222001) do
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20130820215131) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "countrycode"
   end
 
   create_table "productimages", :force => true do |t|
@@ -170,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20130820215131) do
     t.string   "attach_content_type"
     t.integer  "attach_file_size"
     t.datetime "attach_updated_at"
+    t.integer  "stock"
   end
 
   create_table "refinery_resources", :force => true do |t|
