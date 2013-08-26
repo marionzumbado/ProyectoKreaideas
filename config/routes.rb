@@ -5,12 +5,15 @@ CMSKreaideas::Application.routes.draw do
 
 
   
+  devise_for :members
+
   root to: "home#index"
-  devise_for :users
+  #devise_for :users
 
   resources :kreaideasmails
   resources :categories
   resources :products
+
 
 
   
