@@ -1,13 +1,11 @@
-hola dashboard
-
 
 <div id="user_nav">
 	<% if member_signed_in?%>
-	Signed in as <%= current_user.email %> NOT YOU?
-	<%= link_to "Sign out", destroy_member_session_path, :method => :delete%>
+	Inicio sesión como <%= current_user.email %> No es usted?
+	<%= link_to "Cerrar sesión", destroy_member_session_path, :method => :delete%>
 	<%else%>
-		<%= link_to "Sign up", new_member_registration_path%> or
-		<%= link_to "Sign in", new_member_session_path%>
+		<%= link_to "Registrarse", new_member_registration_path%> or
+		<%= link_to "Iniciar sesión", new_member_session_path%>
 	<%end%>
 
 	<% flash.each do |name,msg|%>
